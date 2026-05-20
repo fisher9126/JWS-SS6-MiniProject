@@ -63,20 +63,20 @@ public class CourseService {
         return toDTO(saved);
     }
 
-    // ====== FR-04: FULL UPDATE (PUT) ======
+
 
     public CourseResponseDTO updateCourse(Long id, CourseRequestDTO dto) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found"));
 
-        // Cập nhật toàn bộ field (trừ id, imageUrl)
+
         updateEntityFromDTO(course, dto);
         Course saved = courseRepository.save(course);
         return toDTO(saved);
     }
 
-    // ====== FR-05: PARTIAL UPDATE (PATCH) ======
+
 
     public CourseResponseDTO partialUpdateCourse(Long id, CourseRequestDTO dto) {
         Course course = courseRepository.findById(id)
@@ -97,7 +97,7 @@ public class CourseService {
         return toDTO(saved);
     }
 
-    // ====== FR-06: DELETE COURSE (và ảnh nếu có – với Cloudinary chỉ clear imageUrl) ======
+
 
     public void deleteCourse(Long id) {
         Course course = courseRepository.findById(id)

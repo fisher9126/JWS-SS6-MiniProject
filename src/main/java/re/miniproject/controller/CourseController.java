@@ -31,11 +31,12 @@ public class CourseController {
         this.cloudinaryService = cloudinaryService;
     }
 
+
     // FR-01: GET ALL (phân trang + sort)
     @GetMapping
     public ResponseEntity<Page<CourseResponseDTO>> getAllCourses(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "3") int size,
             @RequestParam(defaultValue = "id,asc") String sort
     ) {
         try {
@@ -50,7 +51,7 @@ public class CourseController {
             Page<CourseResponseDTO> result = courseService.getAllCourses(pageable);
             return ResponseEntity.ok(result);
         } catch (IllegalArgumentException e) {
-            // sort field hoặc direction không hợp lệ → 400 Bad Request (theo SRS)
+
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid sort parameter");
         }
     }
