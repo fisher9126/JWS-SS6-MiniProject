@@ -21,7 +21,7 @@ public class CloudinaryService {
     public String uploadFile(MultipartFile file) {
         try {
             if (file.getSize() > MAX_FILE_SIZE) {
-                throw new ResponseStatusException(HttpStatus.MULTI_STATUS, "Max is 5"));;
+                throw new ResponseStatusException(HttpStatus.MULTI_STATUS, "Max is 5");
             }
 
             Map uploadResult = cloudinary.uploader().upload(
